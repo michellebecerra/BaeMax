@@ -5,10 +5,6 @@ const app = express()
 
 //EAACN853dkEwBADrZAe3tYDgKUzamfEagCiQ7kIy5rlz5a6jkrAwMQQXJnG7ZBfTpLXrlMQKh2lvgIo05e4kEq2ANDGfFEZAZCKI2OO1FyOQTllZBZBGXXkz7So6omBCytNFLDgLbWpyLTSltNJHG0M5iqcHGCic6QYePXBkCGT8QZDZD
 //heroku
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
-const app = express()
 
 app.set('port', (process.env.PORT || 5000))
 
