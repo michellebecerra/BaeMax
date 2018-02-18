@@ -31,6 +31,9 @@ app.set('port', (process.env.PORT || 5000))
 // })
 
 var FBBotFramework = require('fb-bot-framework');
+var lib = require('lib');
+var times = 0;
+
 // Initialize
 var bot = new FBBotFramework({
 page_token: "EAAIhsVUTJo4BAKF934xQwqGqO7y5dSlmiUZBIy7wQuirNdjuLYGAFXTFVcS3vl1MZCDL89P8NWvoZBTzxEz4SlgVwWHa7LI9qXG9yK3nDjbhHqZCAMzKZBKDsI5KplwpgrTzZB3jVP2tbyrGVIdPCiapzJZCKJZBub1ZCR4Xj66ZAgZCAZDZD",
@@ -40,17 +43,27 @@ verify_token: "verify_token"
 // Setup Express middleware for /webhook
 app.use('/webhook/', bot.middleware());
 // Setup listener for incoming messages
-bot.on('message', function(userId, message){
-bot.sendTextMessage(userId,   "Echo: " + message + "UserId: " + userId);
+	times++;
+	bot.on('message', function(userId, message){
+	if(times === 1){
+		bot.sendTextMessage(userId,   "Echo: " + message + " UserId: " + userId);
+	}else if(times == 2){
+		bot.sendTextMessage(userId,   "Second message  ");
+	}
+	
+	
+
 });
 app.get('/', function (req, res){
-res.send('BayMax');
+	res.send('BaeMax');
 });
 
 // Spin up the server
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
+
+
 // app.set('port', (process.env.PORT || 5000))
 // //handles jason how it needs to
 // app.use(bodyParser.urlencoded({extended: false}))
