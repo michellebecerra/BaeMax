@@ -114,7 +114,7 @@ bot.on('message', function(userId, message){
 		var imageUrl = res[0];
 		mess = res[1];
 		bot.sendImageMessage(userId, imageUrl);
-		bot.sendTextMessage(userId, messa);
+		bot.sendTextMessage(userId, mess);
 	}
 });
 
