@@ -101,8 +101,11 @@ bot.on('message', function(userId, message){
 	//bot.sendTextMessage(userId,   "Echo: " + message + "UserId: " + userId);
 	times = times + 1;
 	//bot.on('message', function(userId, message){
-	var jSON = {"UserKey": userId, "message": message};
-	handleRequest(times, jSON, function(err, mess){
+	if(message.includes("Hello") || message.includes("Hi")){
+		bot.sendTextMessage(userId, "Hello there! This is BaeMax thank you for visiting me today tell me a little bit about why you're here.");
+	}else{
+		var jSON = {"UserKey": userId, "message": message};
+		handleRequest(times, jSON, function(err, mess){
 		if(times < 16){
 			
 			console.log(mess);
@@ -114,8 +117,13 @@ bot.on('message', function(userId, message){
 			var text = res[1];
 			bot.sendImageMessage(userId, imageUrl);
 			bot.sendTextMessage(userId, text);
+			if(times >= 16){
+				times = 0
+			}
 		}		
-	});
+	});		
+	}
+
 
 
 });
