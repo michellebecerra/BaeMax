@@ -52,12 +52,14 @@ bot.on('message', function(userId, message){
 		bot.sendTextMessage(userId,   "Echo: " + message + " UserId: " + userId);
 	}else if(times == 2){
 		bot.sendTextMessage(userId,   "Second message  ");
+	}
 	else{
 		bot.sendTextMessage(userId,   "neither  ");
 	}
-});
+}) ;
+
 app.get('/', function (req, res){
-res.send('BaeMax');
+	res.send('BaeMax');
 });
 
 // Spin up the server
