@@ -35,7 +35,7 @@ var lib = require('lib');
 var times = 0;
 
 var quesMap = new Map();
-quesMap.set(1, "Are you experiencing a loss of appetite? If so, why do you think so?");
+quesMap.set(1, "Are you experiencing dry mouth? If so, why do you think so?");
 quesMap.set(2, "Are you having trouble with sleeping? If so, why do you think so?");
 quesMap.set(3, "Are you experiencing aching muscles? If so, why do you think so?");
 quesMap.set(4, "Do you feel that you are having a lack of focus? If so, why do you think so?");
@@ -99,18 +99,17 @@ app.use('/webhook/', bot.middleware());
 // Setup listener for incoming messages
 bot.on('message', function(userId, message){
 	//bot.sendTextMessage(userId,   "Echo: " + message + "UserId: " + userId);
-	
+	times = times + 1;
 	//bot.on('message', function(userId, message){
 	if(message.includes("Hello") || message.includes("Hi")){
-		bot.sendTextMessage(userId, "Hello there! This is BaeMax, thank you for visiting me today. Tell me a little bit about why you're here. Let's figure this out together!");
-		times = 1
+		bot.sendTextMessage(userId, "Hello there! This is BaeMax thank you for visiting me today tell me a little bit about why you're here. Let's figure this out together!");
+		times = 0
 	}else{
 		var jSON = {"UserKey": userId, "message": message};
 		handleRequest(times, jSON, function(err, mess){
-
-		if(times < 5){
+		if(times < 4){
 			
-			alert(err);
+			console.log(mess);
 			bot.sendTextMessage(userId, mess);
 		}else{
 			//results handling
@@ -119,11 +118,10 @@ bot.on('message', function(userId, message){
 			var text = res[1];
 			bot.sendImageMessage(userId, imageUrl);
 			bot.sendTextMessage(userId, text);
-			if(times >= 5){
+			if(times >= 16){
 				times = 0
 			}
-		}
-		times = times + 1;		
+		}		
 	});		
 	}
 
