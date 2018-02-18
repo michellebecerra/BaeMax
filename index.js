@@ -4,7 +4,7 @@ const request = require('request')
 const app = express()
 
 //EAACN853dkEwBADrZAe3tYDgKUzamfEagCiQ7kIy5rlz5a6jkrAwMQQXJnG7ZBfTpLXrlMQKh2lvgIo05e4kEq2ANDGfFEZAZCKI2OO1FyOQTllZBZBGXXkz7So6omBCytNFLDgLbWpyLTSltNJHG0M5iqcHGCic6QYePXBkCGT8QZDZD
-//heroku
+//heroku https://mysterious-brushlands-59124.herokuapp.com/
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -25,6 +25,9 @@ app.get('/webhook/', function (req, res) {
         res.send(req.query['hub.challenge'])
     }
     res.send('No sir')
+})
+app.post('/webhook/', function(req,res){
+	res.send(req.body)
 })
 
 // Spin up the server
