@@ -111,9 +111,9 @@ bot.on('message', function(userId, message){
 			//results handling
 			res = mess.split('$');
 			var imageUrl = res[0];
-			mess = res[1];
+			var text = res[1];
 			bot.sendImageMessage(userId, imageUrl);
-			bot.sendTextMessage(userId, mess);
+			bot.sendTextMessage(userId, text);
 		}		
 	});
 
@@ -141,7 +141,7 @@ function handleRequest(time, json, callback){
 		if(results != "negative" || results != "positive"){
 			return callback(null, results);
 		}
-		var mes = "";
+		var mess = "";
 		if(results == "negative"){
 			mess = neg[time];
 		}else{
