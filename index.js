@@ -143,11 +143,11 @@ function handleRequest(time, json, callback){
 		}
 		var mess = "";
 		if(results == "negative"){
-			mess = neg[time];
+			mess = neg.get(time);
 		}else{
-			mess = pos[time];
+			mess = pos.get(time);
 		}
-		mess += quesMap[time];
+		mess += quesMap.get(time);
 
 		return callback(null, mess);
 	});
