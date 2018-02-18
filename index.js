@@ -56,7 +56,7 @@ var neg = new Map();
 neg.set(1, "I can see how that can be bothersome.");
 neg.set(2, "I hear ya.");
 neg.set(3, "I'm sorry to hear that.");
-neg.set(4, "I'm listening");
+neg.set(4, "I'm listening.");
 neg.set(5, "Hang in there.");
 neg.set(6, "I can see why that's frustrating.");
 neg.set(7, "I understand.");
@@ -132,12 +132,12 @@ app.listen(app.get('port'), function() {
 function handleRequest(time, json, callback){
 
 	lib.gnahum12345.baeMax['@dev']({
-		jFile: json
+		jFile: JSON.stringify(json)
 	}, (err, results) => {
 		if (err) {
 			return callback(err);
 		}
-		console.log(results)
+		//console.log(results)
 		if(results != "negative" && results != "positive"){
 			return callback(null, results);
 		}
