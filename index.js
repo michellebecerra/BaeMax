@@ -131,6 +131,7 @@ function handleRequest(time, json){
 	lib.gnahum12345.baeMax['@dev'](){
 		jFile: JSON.stringify(json);
 	}, (err, results) => {
+		console.log(results)
 		if(results != "negative" || results != "positive"){
 			return results;
 		}
