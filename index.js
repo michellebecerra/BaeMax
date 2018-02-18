@@ -128,7 +128,7 @@ app.listen(app.get('port'), function() {
 
 function handleRequest(time, json){
 
-	lib.gnahum12345.baeMax['@dev'](){
+	lib.gnahum12345.baeMax['@dev']({
 		jFile: JSON.stringify(json);
 	}, (err, results) => {
 		console.log(results)
@@ -144,7 +144,7 @@ function handleRequest(time, json){
 		mess += quesMap[time];
 
 		return mess;
-	}
+	});
 
 }
 // app.set('port', (process.env.PORT || 5000))
