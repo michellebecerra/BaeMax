@@ -107,9 +107,10 @@ bot.on('message', function(userId, message){
 	}else{
 		var jSON = {"UserKey": userId, "message": message};
 		handleRequest(times, jSON, function(err, mess){
+
 		if(times < 5){
 			
-			console.log(mess);
+			alert(err);
 			bot.sendTextMessage(userId, mess);
 		}else{
 			//results handling
