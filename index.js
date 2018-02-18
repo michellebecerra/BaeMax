@@ -99,7 +99,7 @@ app.use('/webhook/', bot.middleware());
 // Setup listener for incoming messages
 bot.on('message', function(userId, message){
 	//bot.sendTextMessage(userId,   "Echo: " + message + "UserId: " + userId);
-	times = times + 1;
+	
 	//bot.on('message', function(userId, message){
 	if(message.includes("Hello") || message.includes("Hi")){
 		bot.sendTextMessage(userId, "Hello there! This is BaeMax, thank you for visiting me today. Tell me a little bit about why you're here. Let's figure this out together!");
@@ -122,7 +122,8 @@ bot.on('message', function(userId, message){
 			if(times >= 5){
 				times = 0
 			}
-		}		
+		}
+		times = times + 1;		
 	});		
 	}
 
