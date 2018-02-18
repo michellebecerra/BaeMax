@@ -109,7 +109,6 @@ bot.on('message', function(userId, message){
 		handleRequest(times, jSON, function(err, mess){
 		if(times < 4){
 			
-			console.log(mess);
 			bot.sendTextMessage(userId, mess);
 		}else{
 			//results handling
@@ -118,7 +117,7 @@ bot.on('message', function(userId, message){
 			var text = res[1];
 			bot.sendImageMessage(userId, imageUrl);
 			bot.sendTextMessage(userId, text);
-			if(times >= 16){
+			if(times >= 15){
 				times = 0
 			}
 		}		
