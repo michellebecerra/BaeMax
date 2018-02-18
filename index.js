@@ -38,13 +38,13 @@ page_token: "EAAIhsVUTJo4BAKF934xQwqGqO7y5dSlmiUZBIy7wQuirNdjuLYGAFXTFVcS3vl1MZC
 verify_token: "verify_token"
 });
 // Setup Express middleware for /webhook
-app.use('/webhook', bot.middleware());
+app.use('/webhook/', bot.middleware());
 // Setup listener for incoming messages
 bot.on('message', function(userId, message){
 bot.sendTextMessage(userId,   "Echo: " + message + "UserId: " + userId);
 });
-app.get("/", function (req, res){
-res.send("BayMax");
+app.get('/', function (req, res){
+res.send('BayMax');
 });
 
 // Spin up the server
