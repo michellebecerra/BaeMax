@@ -102,12 +102,12 @@ bot.on('message', function(userId, message){
 	times = times + 1;
 	//bot.on('message', function(userId, message){
 	if(message.includes("Hello") || message.includes("Hi")){
-		bot.sendTextMessage(userId, "Hello there! This is BaeMax thank you for visiting me today tell me a little bit about why you're here. Let's figure this out together!");
+		bot.sendTextMessage(userId, "Hello there! This is BaeMax, thank you for visiting me today. Tell me a little bit about why you're here. Let's figure this out together!");
 		times = 0
 	}else{
 		var jSON = {"UserKey": userId, "message": message};
 		handleRequest(times, jSON, function(err, mess){
-		if(times < 4){
+		if(times < 5){
 			
 			console.log(mess);
 			bot.sendTextMessage(userId, mess);
