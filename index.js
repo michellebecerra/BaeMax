@@ -102,20 +102,22 @@ bot.on('message', function(userId, message){
 	times = times + 1;
 	//bot.on('message', function(userId, message){
 	var jSON = {"UserKey": userId, "message": message};
-	var mess = "";
-	if(times < 16){
-		mess = handleRequest(times, jSON);
-		console.log(mess);
-		bot.sendTextMessage(userId, messa);
-	}else{
-		//results handling
-		var res = handleRequest(times, jSON);
-		res = res.split('$');
-		var imageUrl = res[0];
-		mess = res[1];
-		bot.sendImageMessage(userId, imageUrl);
-		bot.sendTextMessage(userId, mess);
-	}
+	handleRequest(times, jSON, function(err, mess){
+		if(times < 16){
+			
+			console.log(mess);
+			bot.sendTextMessage(userId, mess);
+		}else{
+			//results handling
+			res = mess.split('$');
+			var imageUrl = res[0];
+			mess = res[1];
+			bot.sendImageMessage(userId, imageUrl);
+			bot.sendTextMessage(userId, mess);
+		}		
+	});
+
+
 });
 
 app.get('/', function (req, res){
@@ -127,14 +129,17 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'));
 });
 
-function handleRequest(time, json){
+function handleRequest(time, json, callback){
 
 	lib.gnahum12345.baeMax['@dev']({
 		jFile: JSON.stringify(json);
 	}, (err, results) => {
+		if (err) {
+			return callback(err)
+		}
 		console.log(results)
 		if(results != "negative" || results != "positive"){
-			return results;
+			return callback(null, results);
 		}
 		var mes = "";
 		if(results == "negative"){
@@ -144,7 +149,7 @@ function handleRequest(time, json){
 		}
 		mess += quesMap[time];
 
-		return mess;
+		return callback(null, mess);
 	});
 
 }
