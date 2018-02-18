@@ -1,12 +1,12 @@
-const express = require('express')
+const express = require('express');
 //const bodyParser = require('body-parser')
 //const request = require('request')
-const app = express()
+const app = express();
 
 //EAACN853dkEwBADrZAe3tYDgKUzamfEagCiQ7kIy5rlz5a6jkrAwMQQXJnG7ZBfTpLXrlMQKh2lvgIo05e4kEq2ANDGfFEZAZCKI2OO1FyOQTllZBZBGXXkz7So6omBCytNFLDgLbWpyLTSltNJHG0M5iqcHGCic6QYePXBkCGT8QZDZD
 //heroku https://mysterious-brushlands-59124.herokuapp.com/
 
-app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 5000));
 
 // // Process application/x-www-form-urlencoded
 // app.use(bodyParser.urlencoded({extended: false}))
@@ -46,7 +46,7 @@ quesMap.set(8, "Are you experiencing a loss of appetite? If so, why do you think
 quesMap.set(9, "Have you been experiencing forgetfulness? If so, why do you think so?");
 quesMap.set(10, "Have you been having careless mistakes? If so, why do you think so?");
 quesMap.set(11, "Have you experienced a death? If so, please elaborate.");
-quesMap,set(12, "Have you experienced trauma? If so, please elaborate.");
+quesMap.set(12, "Have you experienced trauma? If so, please elaborate.");
 quesMap.set(13, "Do you feel like you have too much energy? If so, why do you think so?");
 quesMap.set(14, "Do you feel like you talk very fast? If so, why do you think so?");
 quesMap.set(15, "Do you have issues with your body image? If so, why do you think so?");
@@ -54,7 +54,7 @@ quesMap.set(16, "Do you overeat frequently? If so, why do you think so?");
 
 var neg = new Map();
 neg.set(1, "I can see how that can be bothersome.");
-neg.set(2, "I hear ya.")
+neg.set(2, "I hear ya.");
 neg.set(3, "I'm sorry to hear that.");
 neg.set(4, "I'm listening").
 neg.set(5, "Hang in there.");
@@ -102,17 +102,18 @@ bot.on('message', function(userId, message){
 	times = times + 1;
 	//bot.on('message', function(userId, message){
 	var jSON = {"UserKey": userId, "message": message};
+	var mess = '';
 	if(times < 16){
-		var messa = handleRequest(times, jSON);
+		mess = handleRequest(times, jSON);
 		bot.sendTextMessage(userId, messa);
 	}else{
 		//results handling
-		var res = handleRequest(times, jSON)
-		res = res.split("$");
+		var res = handleRequest(times, jSON);
+		res = res.split('$');
 		var imageUrl = res[0];
-		var messa = res[1];
-		bot.sendImageMessage(userId, imageUrl)
-		bot.sendTextMessage(userId, messa)
+		mess = res[1];
+		bot.sendImageMessage(userId, imageUrl);
+		bot.sendTextMessage(userId, messa);
 	}
 });
 
@@ -122,23 +123,22 @@ app.get('/', function (req, res){
 
 // Spin up the server
 app.listen(app.get('port'), function() {
-    console.log('running on port', app.get('port'))
-})
+    console.log('running on port', app.get('port'));
+});
 
 function handleRequest(time, json){
 
 	lib.gnahum12345.baeMax['@dev'](){
-
 		jFile: JSON.stringify(jSON);
-
-	},(err, results)=>{
+	}, (err, results) => {
 		if(results != "negative" || results != "positive"){
 			return results;
 		}
+		var mes = "";
 		if(results === "negative"){
-			var mess = neg[time];
+			mess = neg[time];
 		}else{
-			var mess = pos[time];
+			mess = pos[time];
 		}
 		mess += quesMap[time];
 
