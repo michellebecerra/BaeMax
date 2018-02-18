@@ -6,7 +6,7 @@ const app = express()
 //heroku
 app.set('port', (process.env.PORT || 5000))
 //handles jason how it needs to
-app.use(bodyParser.bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.get('/', function(req, res){
