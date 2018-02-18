@@ -102,7 +102,7 @@ bot.on('message', function(userId, message){
 	times = times + 1;
 	//bot.on('message', function(userId, message){
 	var jSON = {"UserKey": userId, "message": message};
-	var mess = '';
+	var mess = "";
 	if(times < 16){
 		mess = handleRequest(times, jSON);
 		bot.sendTextMessage(userId, messa);
