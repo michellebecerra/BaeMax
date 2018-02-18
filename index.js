@@ -118,7 +118,7 @@ bot.on('message', function(userId, message){
 			var text = res[1];
 			bot.sendImageMessage(userId, imageUrl);
 			bot.sendTextMessage(userId, text);
-			if(times >= 16){
+			if(times >= 5){
 				times = 0
 			}
 		}		
