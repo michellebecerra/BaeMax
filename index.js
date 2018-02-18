@@ -132,10 +132,10 @@ app.listen(app.get('port'), function() {
 function handleRequest(time, json, callback){
 
 	lib.gnahum12345.baeMax['@dev']({
-		jFile: JSON.stringify(json);
+		jFile: json
 	}, (err, results) => {
 		if (err) {
-			return callback(err)
+			return callback(err);
 		}
 		console.log(results)
 		if(results != "negative" || results != "positive"){
