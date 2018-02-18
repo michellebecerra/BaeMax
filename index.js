@@ -43,19 +43,21 @@ verify_token: "verify_token"
 // Setup Express middleware for /webhook
 app.use('/webhook/', bot.middleware());
 // Setup listener for incoming messages
-	times++;
-	bot.on('message', function(userId, message){
+bot.on('message', function(userId, message){
+	//bot.sendTextMessage(userId,   "Echo: " + message + "UserId: " + userId);
+	times = times + 1;
+	//bot.on('message', function(userId, message){
+	
 	if(times === 1){
 		bot.sendTextMessage(userId,   "Echo: " + message + " UserId: " + userId);
 	}else if(times == 2){
 		bot.sendTextMessage(userId,   "Second message  ");
+	else{
+		bot.sendTextMessage(userId,   "neither  ");
 	}
-	
-	
-
 });
 app.get('/', function (req, res){
-	res.send('BaeMax');
+res.send('BaeMax');
 });
 
 // Spin up the server
