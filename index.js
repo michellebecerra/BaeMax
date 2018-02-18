@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 
 app.get('/', function(req, res){
 	res.send("Hello ");
-});
+})
 
 app.get('/webhook/', function(req, rest){
 	if(req.query['hub.verify_token'] ===
@@ -19,8 +19,8 @@ app.get('/webhook/', function(req, rest){
 			res.send(req.query['hub.challenge'])
 		}
 	res.send('No entry')
-});
+})
 
 app.listen(app.get('port', function(){
 	console.log('running on port', app.get('port'))
-});
+})
