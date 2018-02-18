@@ -138,7 +138,7 @@ function handleRequest(time, json, callback){
 			return callback(err);
 		}
 		console.log(results)
-		if(results != "negative" || results != "positive"){
+		if(results != "negative" && results != "positive"){
 			return callback(null, results);
 		}
 		var mess = "";
