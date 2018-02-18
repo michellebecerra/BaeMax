@@ -113,7 +113,7 @@ bot.on('message', function(userId, message){
 			bot.sendTextMessage(userId, mess);
 		}else{
 			//results handling
-			res = mess.split('$');
+			res = mess.split("zebra");
 			var imageUrl = res[0];
 			var text = res[1];
 			bot.sendImageMessage(userId, imageUrl);
