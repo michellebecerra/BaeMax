@@ -105,6 +105,7 @@ bot.on('message', function(userId, message){
 	var mess = "";
 	if(times < 16){
 		mess = handleRequest(times, jSON);
+		console.log(mess);
 		bot.sendTextMessage(userId, messa);
 	}else{
 		//results handling
