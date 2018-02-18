@@ -5,7 +5,7 @@ const app = express()
 
 //EAACN853dkEwBADrZAe3tYDgKUzamfEagCiQ7kIy5rlz5a6jkrAwMQQXJnG7ZBfTpLXrlMQKh2lvgIo05e4kEq2ANDGfFEZAZCKI2OO1FyOQTllZBZBGXXkz7So6omBCytNFLDgLbWpyLTSltNJHG0M5iqcHGCic6QYePXBkCGT8QZDZD
 //heroku
-// app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 5000))
 // //handles jason how it needs to
 // app.use(bodyParser.urlencoded({extended: false}))
 // app.use(bodyParser.json())
@@ -41,8 +41,10 @@ app.use('/webhook', bot.middleware());
 bot.on('message', function(userId, message){
 bot.sendTextMessage(userId,   "Echo: " + message + "UserId: " + userId);
 });
-app.get("/", function (req, res){
+app.get('/', function (req, res){
 res.send("BayMax");
 });
 //Make Express listening
-app.listen(process.env.PORT); 
+app.listen(app.get('port'), function(){
+	console.log('running on port', app.get('port'))
+})
