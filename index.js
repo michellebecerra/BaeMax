@@ -35,7 +35,7 @@ var lib = require('lib');
 var times = 0;
 
 var quesMap = new Map();
-quesMap.set(1, "Are you experiencing dry mouth? If so, why do you think so?");
+quesMap.set(1, "Are you experiencing a loss of appetite? If so, why do you think so?");
 quesMap.set(2, "Are you having trouble with sleeping? If so, why do you think so?");
 quesMap.set(3, "Are you experiencing aching muscles? If so, why do you think so?");
 quesMap.set(4, "Do you feel that you are having a lack of focus? If so, why do you think so?");
