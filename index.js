@@ -27,7 +27,7 @@ app.get('/webhook/', function (req, res) {
     res.send('No sir')
 })
 app.post('/webhook/', function(req,res){
-	res.send(req.body)
+	res.send(req.body.content[0])
 })
 
 // Spin up the server
